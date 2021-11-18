@@ -49,6 +49,7 @@ public with sharing class CountdownTimerController_Test {
 
     @isTest
     static void scheduleNewJobTest(){
+        PostInstallHandler.onInstall(null);
         Test.startTest();
             System.assertEquals(15, CountdownTimerController.scheduleNewJob(System.today().addDays(1), 10).length());
         Test.stopTest();

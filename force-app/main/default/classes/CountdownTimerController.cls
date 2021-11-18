@@ -36,7 +36,8 @@ public with sharing class CountdownTimerController {
             
             return dates;
         } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
+            System.debug(e.getMessage());
+            return null;
         }
     }
 
@@ -48,13 +49,23 @@ public with sharing class CountdownTimerController {
     }
 
     @AuraEnabled
-    public static string setNotificationDates(List<Date> dates){
+    public static string abortThenSchedule(List<Date> dates){
         try {
-            String jobId = '';
             //Get all jobs scheduled by us
             List<CronTrigger> crons = getCronsForOrgExpiry();
             //Cancel all jobs scheduled by us
             abortCurrentJobs(crons);
+            //Schedule new jobs
+            return setNotificationDates(dates);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
+    public static string setNotificationDates(List<Date> dates){
+        try {
+            String jobId = '';
             Integer nameSuffix = 1;
             if(dates != null){
                 //Don't schedule the same job on the same day. 
@@ -76,7 +87,7 @@ public with sharing class CountdownTimerController {
             }
         } catch (Exception e) {
             System.debug(e.getMessage());
-            throw new AuraHandledException(e.getMessage());
+            return null;
         }
     }
 

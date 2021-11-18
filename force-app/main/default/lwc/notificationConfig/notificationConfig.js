@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
-import setNotificationDates from '@salesforce/apex/CountdownTimerController.setNotificationDates';
+import abortThenSchedule from '@salesforce/apex/CountdownTimerController.abortThenSchedule';
 import getScheduledNotifications from '@salesforce/apex/CountdownTimerController.getScheduledNotifications';
 
 export default class NotificationConfig extends LightningElement {
@@ -85,7 +85,7 @@ export default class NotificationConfig extends LightningElement {
         
     handleSave(){
         var dates = [this.date1, this.date2];
-        setNotificationDates({dates: dates})
+        abortThenSchedule({dates: dates})
         .then((result) => {
             if(result.includes('cancelled')){
                 this.showToast('Success', result, 'warning')

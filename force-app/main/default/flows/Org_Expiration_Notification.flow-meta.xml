@@ -155,7 +155,7 @@
         <object>Org_Expiry_Notification__e</object>
         <triggerType>PlatformEvent</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <textTemplates>
         <description>The body of the email to be sent to selected users</description>
         <name>EmailBody</name>
@@ -171,14 +171,6 @@
         <value>
             <stringValue>Org_Expiry_Recipient</stringValue>
         </value>
-    </variables>
-    <variables>
-        <description>The names of the permission sets we want to retrieve the users for</description>
-        <name>PermissionSetNames</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
     </variables>
     <variables>
         <description>Emails of the users to be notified</description>
