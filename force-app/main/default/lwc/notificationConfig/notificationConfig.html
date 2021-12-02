@@ -2,7 +2,7 @@
     <div class="slds-grid slds-m-around_small slds-align_absolute-center">
         <p>Select up to 2 dates to be notified of your org expiration date. <br />
         By default, these are set to 1 day and 7 days before org expiration.
-        <lightning-helptext content="By default, notifications are sent to all System Administrators and users with the Org Expire Recipient permission set in this organisation. 
+        <lightning-helptext content="By default, notifications are sent to all System Administrators and users with the 'Org Expiry Recipient' permission set in this organisation. 
                                     Modify this behaviour by adjusting the Org Expiration Notification Lightning Flow in Setup">
         </lightning-helptext></p>
     </div>
@@ -29,4 +29,11 @@
             </div>
         </div>
     </template>
+
+    <div class="slds-align_absolute-center slds-p-left_small slds-p-right_small">
+            <lightning-formatted-text value="If this is a Partner Business Org and you have signed a partnership contract, or you need to extend the lifetime of this org, please raise a case below:"></lightning-formatted-text>
+    </div>
+    <div class="slds-align_absolute-center slds-p-left_small slds-p-right_small">
+        <lightning-formatted-url label="Salesforce Help" value="https://help.salesforce.com/s/case-selection" tooltip="Partner Support" target="_blank"></lightning-formatted-url>
+    </div>
 </template>
