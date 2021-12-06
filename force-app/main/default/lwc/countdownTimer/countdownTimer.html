@@ -19,7 +19,7 @@
                     </template>
                     <template if:true={expiresToday}>
                         <div class="slds-align_absolute-center slds-p-around_small">
-                            This org is due to expire in less than 1 day. Please use the links below to activate the org or extend the trial.
+                            This org is due to expire in less than 1 day. Please use the link below to activate the org or extend the trial.
                         </div>
                     </template>
                     <div class="slds-align_absolute-center slds-m-top_small">
@@ -27,14 +27,13 @@
                     </div>
 
                     <div slot="footer">
-                        <p><lightning-formatted-url value="https://partners.salesforce.com/newPartnerCase?subtopic=BenefitsAndTools" label="Once you have a signed partnership agreement with Salesforce, raise this case to activate your org." target="_blank"></lightning-formatted-url></p>
-                        <p class="slds-m-top_xx-small"><lightning-formatted-url value="https://partners.salesforce.com/newPartnerCase?subtopic=TrialExtension" label="Need more time? Use this link to automatically extend your org expiration." target="_blank"></lightning-formatted-url></p>
+                        <lightning-formatted-url label="Salesforce Help" value="https://help.salesforce.com/s/case-selection" tooltip="Partner Support" target="_blank"></lightning-formatted-url>
                     </div>
             </template>
         </template>
         <template if:true={orgActive}>
             <div class="slds-m-left_small">
-                This org is already active - No action required.
+                This org is already active. You can now uninstall the Org Expiry Notifier app from the Setup menu.
             </div>
         </template>
     </lightning-card>

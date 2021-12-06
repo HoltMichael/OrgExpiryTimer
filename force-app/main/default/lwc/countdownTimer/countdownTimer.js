@@ -52,7 +52,7 @@ export default class CountdownTimer extends LightningElement {
             const hours = Math.floor( (total/(1000*60*60)) % 24 );
             const days = Math.floor( total/(1000*60*60*24) );     
 
-            this.timeRemainingAsString =  days + ' days ' + hours + ' hours ' +  minutes + ' minutes ' + seconds + ' seconds';
+            this.timeRemainingAsString =  days + ' days ' + hours + ' hours ' +  minutes + ' minutes'; //Removed seconds:// + seconds + ' seconds';
             
             var deadlineDate = new Date(this.deadline); 
             this.deadline = deadlineDate.toDateString();

@@ -4,9 +4,9 @@
             "path": "force-app",
             "default": true,
             "package": "Org Expiry Notifier",
-            "versionName": "ver 0.1",
-            "versionNumber": "0.1.7.NEXT",
-            "ancestorId": "04t1n000001pHM8AAM"
+            "versionName": "ver 0.2",
+            "versionNumber": "0.2.4.NEXT",
+            "ancestorId": "04t1n000001pHPqAAM"
         }
     ],
     "namespace": "MHolt",
@@ -22,6 +22,11 @@
         "Org Expiry Notifier@0.1.4-1": "04t1n000001pHMNAA2",
         "Org Expiry Notifier@0.1.5-1": "04t1n000001pHMSAA2",
         "Org Expiry Notifier@0.1.6-2": "04t1n000001pHMcAAM",
-        "Org Expiry Notifier@0.1.7-2": "04t1n000001pHMmAAM"
+        "Org Expiry Notifier@0.1.7-2": "04t1n000001pHMmAAM",
+        "Org Expiry Notifier@0.2.0-1": "04t1n000001pHPqAAM",
+        "Org Expiry Notifier@0.2.1-1": "04t1n000001pHPvAAM",
+        "Org Expiry Notifier@0.2.2-1": "04t1n000001pHQ0AAM",
+        "Org Expiry Notifier@0.2.3-2": "04t1n000001pHQFAA2",
+        "Org Expiry Notifier@0.2.4-1": "04t1n000001pHQKAA2"
     }
 }
