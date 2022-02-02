@@ -10,7 +10,7 @@
  * 
  */
 
-public with sharing class CountdownTimerController { 
+public without sharing class CountdownTimerController { 
     public static final String JOBS_CANCELLED = 'Scheduled jobs cancelled, you will not receive an org expiry notification';
     public static final String JOBS_SCHEDULED = 'Successfully scheduled! Job Ids: ';
     private static Map<Integer, String> monthNamesByInteger = new Map<Integer, String>
@@ -18,12 +18,71 @@ public with sharing class CountdownTimerController {
 
 
     @AuraEnabled
-    public Static String getExpirationDate(){
+    public Static String getExpirationDate(){        
         Organization org = [SELECT TrialExpirationDate FROM Organization];
         return string.valueOf(org.TrialExpirationDate);
     }
 
+    /*
+        Returns whether the scheduled job to fire the notifications is active
+        If they are inactive, LWC prompts user to click "Activate" button
+        for user to take ownership of existing jobs
+    */
+    @AuraEnabled(cacheable=true)
+    public static boolean scheduledJobUserActive(){
+        try{
+            boolean cronByActiveUser = true;
+            List<CronTrigger> crons = getCronsForOrgExpiry();
+            //Get cron owners
+            Set<Id> ownerIds = new Set<Id>();
+            for(CronTrigger c : crons){
+                ownerIds.add(c.ownerId);
+            }
+            List<User> owners = [SELECT isActive FROM User Where ID IN: ownerIds];
+
+            //On install, the jobs will be scheduled by the Package License Manager user. This user does not have
+            //permission to access the platform event and the job therefore fails. Fix by flagging this as an inactive user            
+            if(crons.size() > 0 && owners.size() == 0){
+                cronByActiveUser = false;
+            }
+            //Find out if Active
+            for(User u : owners){
+                if(!u.isActive){
+                    cronByActiveUser = false;
+                }
+            }
+            return cronByActiveUser;
+        }catch(Exception e){
+            System.debug(e.getMessage());
+            return null;
+        }
+    }
+
+    /*
+        Cancels existing jobs and re-schedules as the current user
+        Used to swap inactive users out from owning the scheduled jobs
+        Typically post-PBO creation from template
+    */
     @AuraEnabled
+    public static String changeScheduledJobOwner(){
+        try {
+            List<CronTrigger> crons = getCronsForOrgExpiry();
+            abortCurrentJobs(crons);
+            Integer i = 0;
+            for(CronTrigger c : crons){
+                System.debug(c.NextFireTime);
+                Date d = c.NextFireTime.date(); 
+                i++;
+                scheduleNewJob(d, i);
+            }
+            
+            return 'Success';
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+
+    @AuraEnabled(cacheable=true)
     public static List<String> getScheduledNotifications(){
         try {
             List<CronTrigger> crons = getCronsForOrgExpiry();
@@ -33,7 +92,7 @@ public with sharing class CountdownTimerController {
                 String dateStr = exprs[3] +  ' ' + monthNamesByInteger.get(Integer.valueOf(exprs[4])) + ' ' + exprs[6];
                 dates.add(dateStr);
             }
-            
+
             return dates;
         } catch (Exception e) {
             System.debug(e.getMessage());
@@ -42,7 +101,7 @@ public with sharing class CountdownTimerController {
     }
 
     public static List<CronTrigger> getCronsForOrgExpiry(){
-        return [SELECT Id, CronJobDetail.Id, CronJobDetail.Name, CronJobDetail.JobType, CronExpression
+        return [SELECT Id, CronJobDetail.Id, CronJobDetail.Name, CronJobDetail.JobType, CronExpression, OwnerId, NextFireTime
                 FROM CronTrigger 
                 WHERE CronJobDetail.Name Like 'OrgExpiryNotification%' 
                 Order By  CronJobDetail.Name Asc];

@@ -80,7 +80,6 @@ export default class NotificationConfig extends LightningElement {
         .catch((error) => {
             this.showToast('Error', error.body.message, 'error')
         });
-
     }
         
     handleSave(){

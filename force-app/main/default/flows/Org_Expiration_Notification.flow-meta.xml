@@ -42,6 +42,12 @@
             </value>
         </inputParameters>
         <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
             <name>emailSubject</name>
             <value>
                 <stringValue>Notification of Org Expiry</stringValue>
@@ -160,7 +166,7 @@
     <textTemplates>
         <description>The body of the email to be sent to selected users</description>
         <name>EmailBody</name>
-        <text>&lt;p&gt;Hello,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is an automated notification informing you that your Salesforce org with ID {!$Organization.Id} is due to expire on {!$Record.Expiry_Date__c}, at which point, you will be unable to login to the org.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Once you have a signed partnership agreement with Salesforce, raise a case to activate the org and prevent future expiry.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;If you have not yet signed a partnership agreement with Salesforce, but would like to pursue this and extend your trial period, then please also raise a case to automatically extend the lifetime of your org.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Cases can be raised at Salesforce Help, under the Salesforce Partner Program Support tile below:&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;https://help.salesforce.com/s/case-selection&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Once your org has been extended, it&apos;s wise to set this reminder of org expiry again in future using the Org Expiration Manager component within your org.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Kind regards,&lt;/p&gt;&lt;p&gt;The Salesforce Technical Evangelism Team&lt;/p&gt;</text>
+        <text>&lt;p&gt;Hello,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is an automated notification informing you that your Salesforce org with ID {!$Organization.Id} is due to expire on {!$Record.Expiry_Date__c}, at which point, you will be unable to login to the org.&lt;/p&gt;&lt;p&gt;Once you have a signed partnership agreement with Salesforce, raise a case to activate the org and prevent future expiry.&lt;/p&gt;&lt;p&gt;If you have not yet signed a partnership agreement with Salesforce, but would like to pursue this and extend your trial period, then please also raise a case to automatically extend the lifetime of your org.&lt;/p&gt;&lt;p&gt;Cases can be raised at &lt;a href=&quot;https://help.salesforce.com/s/case-selection&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Salesforce Help&lt;/a&gt;, under the Salesforce Partner Program Support tile. Once your org has been extended, it&apos;s wise to set this reminder of org expiry again in future using the Org Expiration Manager component within your org.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Kind regards,&lt;/p&gt;&lt;p&gt;The Salesforce Technical Evangelism Team&lt;/p&gt;</text>
     </textTemplates>
     <variables>
         <description>Holds a permission set name</description>

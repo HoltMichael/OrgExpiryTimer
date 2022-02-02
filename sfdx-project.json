@@ -5,8 +5,8 @@
             "default": true,
             "package": "Org Expiry Notifier",
             "versionName": "ver 0.2",
-            "versionNumber": "0.2.4.NEXT",
-            "ancestorId": "04t1n000001pHPqAAM"
+            "versionNumber": "0.2.17.NEXT",
+            "ancestorId": "04t1n000001pHVUAA2"
         }
     ],
     "namespace": "MHolt",
@@ -27,6 +27,19 @@
         "Org Expiry Notifier@0.2.1-1": "04t1n000001pHPvAAM",
         "Org Expiry Notifier@0.2.2-1": "04t1n000001pHQ0AAM",
         "Org Expiry Notifier@0.2.3-2": "04t1n000001pHQFAA2",
-        "Org Expiry Notifier@0.2.4-1": "04t1n000001pHQKAA2"
+        "Org Expiry Notifier@0.2.4-1": "04t1n000001pHQKAA2",
+        "Org Expiry Notifier@0.2.5-2": "04t1n000001pHQyAAM",
+        "Org Expiry Notifier@0.2.6-1": "04t1n000001pHRIAA2",
+        "Org Expiry Notifier@0.2.7-1": "04t1n000001pHSpAAM",
+        "Org Expiry Notifier@0.2.8-2": "04t1n000001pHV5AAM",
+        "Org Expiry Notifier@0.2.9-1": "04t1n000001pHVFAA2",
+        "Org Expiry Notifier@0.2.10-1": "04t1n000001pHVKAA2",
+        "Org Expiry Notifier@0.2.11-1": "04t1n000001pHVPAA2",
+        "Org Expiry Notifier@0.2.12-1": "04t1n000001pHVUAA2",
+        "Org Expiry Notifier@0.2.14-1": "04t1n000001pHXfAAM",
+        "Org Expiry Notifier@0.2.15-1": "04t1n000001pHXkAAM",
+        "Org Expiry Notifier@0.2.16-1": "04t1n000001pHXpAAM",
+        "Org Expiry Notifier@0.2.16-2": "04t1n000001pHXuAAM",
+        "Org Expiry Notifier@0.2.17-1": "04t1n000001pHXzAAM"
     }
 }

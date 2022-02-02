@@ -5,8 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 import getExpirationDate from '@salesforce/apex/CountdownTimerController.getExpirationDate';
+import scheduledJobUserActive from '@salesforce/apex/CountdownTimerController.scheduledJobUserActive';
+import changeScheduledJobOwner from '@salesforce/apex/CountdownTimerController.changeScheduledJobOwner';
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+import getScheduledNotifications from '@salesforce/apex/CountdownTimerController.getScheduledNotifications';
+
 
 export default class CountdownTimer extends LightningElement {
     title = "Org Expiration"
@@ -14,9 +19,12 @@ export default class CountdownTimer extends LightningElement {
     timeRemainingAsString;
     expanded = false;
     orgActive = false;
+    cronsScheduledByInactiveUser = false;
+    cmpVisible=true;
 
     @track daysBeforeExpiry;
-    @track buttonLabel = "Configure Expiry Notifications";
+    @track configureButton = "Configure Expiry Notifications";
+    
     
     connectedCallback(){
         this.getOrgExpiration();
@@ -28,6 +36,54 @@ export default class CountdownTimer extends LightningElement {
     }
 
     /*
+        scheduledJobsOwnedByActiveUser
+        If any of the cron jobs related to this app are owned by
+        an inactive user, then flag this to the user and allow them
+        to click a button to take ownership of the jobs
+    */
+    @wire(scheduledJobUserActive)
+    scheduledJobsOwnedByActiveUser({error, data}){
+        if(data === false){
+            this.cronsScheduledByInactiveUser = true;
+            this.fireToast('Org Expiry Notifier', 'Notifications currently owned by inactive user. Click \'Activate Notifications\' to fix.', 'error')
+        }
+        if(error){
+            console.log(error);
+        }
+    }
+
+    @wire(getScheduledNotifications)
+    getScheduledNotifications({error, data}){
+        console.log(data);
+        console.log(error);
+        if(data == ''){
+            this.fireToast('Org Expiry Notifier','No org expiration notifications have been configured. Use \'Configure Expiry Notifications\' to fix this', 'warning');
+        }
+    }
+
+
+    changeOwner(){
+        changeScheduledJobOwner()
+        .then((result) => {
+            this.fireToast(result, '', 'success')
+            this.cronsScheduledByInactiveUser = false;
+        })
+        .catch((error) => {
+            this.fireToast('Error',error,'error')
+        });
+    }
+
+    fireToast(t, m, v) {
+        const evt = new ShowToastEvent({
+            title: t,
+            message: m,
+            variant: v,
+        });
+        this.dispatchEvent(evt);
+    }
+    
+
+    /*
         getOrgExpiration
         Retrieves the expiry date of the trial org.
         Can't use @Wire due to the need for record ID 
@@ -37,8 +93,10 @@ export default class CountdownTimer extends LightningElement {
         getExpirationDate()
             .then((result) => {
                 this.deadline = result;
+                this.cmpVisible = true;
             })
             .catch((error) => {
+                this.cmpVisible = false;
                 console.log(error);
             })
     }
@@ -65,9 +123,9 @@ export default class CountdownTimer extends LightningElement {
       invertExpanded(){
           this.expanded = !this.expanded;
           if(this.expanded){
-            this.buttonLabel = "Collapse";
+            this.configureButton = "Collapse";
           }else{
-            this.buttonLabel = "Configure Expiry Notifications";
+            this.configureButton = "Configure Expiry Notifications";
           }
       }
 }

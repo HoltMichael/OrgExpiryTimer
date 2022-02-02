@@ -6,35 +6,56 @@
  -->
 
 <template>
-    <lightning-card title={title} icon-name="utility:clock">
-        <template if:false={orgActive}>
-            <template if:true={timeRemainingAsString}>
-                    <div class="txt">Org Expires on: {deadline}</div>
-                    <div class="txt-small">{timeRemainingAsString}</div>
-    
-                    <template if:true={expanded}>
-                        <template if:false={expiresToday}>
-                            <c-notification-config days-before-expiry={daysBeforeExpiry}></c-notification-config>
+    <template if:true={cmpVisible}>
+        <lightning-card title={title} icon-name="utility:clock">
+            <template if:false={orgActive}>
+                <template if:true={timeRemainingAsString}>
+                        <div class="txt">Org Expires on: {deadline}</div>
+                        <div class="txt-small">{timeRemainingAsString}</div>
+        
+                        <template if:true={expanded}>
+                            <template if:false={expiresToday}>
+                                <c-notification-config days-before-expiry={daysBeforeExpiry}></c-notification-config>
+                            </template>
                         </template>
-                    </template>
-                    <template if:true={expiresToday}>
-                        <div class="slds-align_absolute-center slds-p-around_small">
-                            This org is due to expire in less than 1 day. Please use the link below to activate the org or extend the trial.
+                        <template if:true={expiresToday}>
+                            <div class="slds-align_absolute-center slds-p-left_small slds-p-right_small">
+                                <lightning-formatted-text value="This org is due to expire in less than 1 day. Please use the link below to activate the org or extend the trial."></lightning-formatted-text>
+                            </div>
+                            <div class="slds-align_absolute-center slds-p-left_small slds-p-right_small">
+                                <lightning-formatted-url label="Salesforce Help" value="https://help.salesforce.com/s/case-selection" tooltip="Partner Support" target="_blank"></lightning-formatted-url>
+                            </div>
+                        </template>
+                        <template if:false={expiresToday}>
+                            <div class="slds-align_absolute-center slds-m-top_small slds-m-left_small slds-grid slds-wrap">
+                                <template if:true={cronsScheduledByInactiveUser}>
+                                    <div class="slds-col slds-size_1-of-1 slds-align_absolute-center slds-m-bottom_small">
+                                        <div>
+                                            <p class="slds-align_absolute-center">Expiry notifications are currently inactive.</p>
+                                            <p class="slds-align_absolute-center">Click the button below to get notified before this trial org expires.</p>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-align_absolute-center">
+                                        <lightning-button variant="destructive" label='Activate Notifications' title='Activate Notifications' onclick={changeOwner}></lightning-button>
+                                        <lightning-helptext content="Reminder notifications are currently scheduled by an inactive user, click here to move ownership to an active user" ></lightning-helptext></p>
+                                    </div>
+                                    
+                                </template>
+                                <template if:false={cronsScheduledByInactiveUser}>
+                                    <lightning-button variant="brand" label={configureButton} title={configureButton} onclick={invertExpanded} ></lightning-button>
+                                </template>
+                            </div>
+                        </template>
+                        <div slot="footer">
+                            <lightning-formatted-url label="Salesforce Help" value="https://help.salesforce.com/s/case-selection" tooltip="Partner Support" target="_blank"></lightning-formatted-url>
                         </div>
-                    </template>
-                    <div class="slds-align_absolute-center slds-m-top_small">
-                        <lightning-button variant="brand" label={buttonLabel} title={buttonLabel} onclick={invertExpanded} ></lightning-button>
-                    </div>
-
-                    <div slot="footer">
-                        <lightning-formatted-url label="Salesforce Help" value="https://help.salesforce.com/s/case-selection" tooltip="Partner Support" target="_blank"></lightning-formatted-url>
-                    </div>
+                </template>
             </template>
-        </template>
-        <template if:true={orgActive}>
-            <div class="slds-m-left_small">
-                This org is already active. You can now uninstall the Org Expiry Notifier app from the Setup menu.
-            </div>
-        </template>
-    </lightning-card>
+            <template if:true={orgActive}>
+                <div class="slds-m-left_small">
+                    This org is already active. You can now uninstall the Org Expiry Notifier app from the Setup menu.
+                </div>
+            </template>
+        </lightning-card>
+    </template>
 </template>

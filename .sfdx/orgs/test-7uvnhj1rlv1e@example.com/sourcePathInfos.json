@@ -28,8 +28,7 @@
     "changeTime": 1638450513457,
     "contentHash": "5a599895923e3f9b78373e64361f6ea81d4a7e22",
     "state": "u",
-    "package": "force-app",
-    "deferContentHash": true
+    "package": "force-app"
   },
   "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/classes": {
     "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/classes",
@@ -167,6 +166,38 @@
     "package": "force-app",
     "metadataType": "ApexClass"
   },
+  "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages": {
+    "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages",
+    "isDirectory": true,
+    "size": 128,
+    "modifiedTime": 1638446906618,
+    "changeTime": 1638446912770,
+    "contentHash": "f6c68fd38626b4587c8f58e03a2f74be88453862",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages/Home_Page_Default.flexipage-meta.xml": {
+    "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages/Home_Page_Default.flexipage-meta.xml",
+    "size": 1728,
+    "modifiedTime": 1638450486426,
+    "changeTime": 1638450486426,
+    "contentHash": "4733a8590be3c8ff879a2b67c87612e0dab955b8",
+    "isMetadataFile": true,
+    "state": "u",
+    "package": "force-app",
+    "metadataType": "FlexiPage"
+  },
+  "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages/Home_Page_Default1.flexipage-meta.xml": {
+    "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages/Home_Page_Default1.flexipage-meta.xml",
+    "size": 1728,
+    "modifiedTime": 1638446906618,
+    "changeTime": 1638446906618,
+    "contentHash": "4733a8590be3c8ff879a2b67c87612e0dab955b8",
+    "isMetadataFile": true,
+    "state": "u",
+    "package": "force-app",
+    "metadataType": "FlexiPage"
+  },
   "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flows": {
     "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flows",
     "isDirectory": true,
@@ -192,8 +223,8 @@
     "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc",
     "isDirectory": true,
     "size": 192,
-    "modifiedTime": 1622646632663,
-    "changeTime": 1622646632663,
+    "modifiedTime": 1638446517386,
+    "changeTime": 1638446517386,
     "contentHash": "2f9e7421b17b9b108de836e2743e74dea3f918db",
     "state": "u",
     "package": "force-app"
@@ -206,8 +237,7 @@
     "changeTime": 1638806323965,
     "contentHash": "f172b9c92eae1494e7c4dfeca9b88301a7027609",
     "state": "u",
-    "package": "force-app",
-    "deferContentHash": true
+    "package": "force-app"
   },
   "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc/countdownTimer/countdownTimer.css": {
     "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc/countdownTimer/countdownTimer.css",
@@ -227,8 +257,7 @@
     "contentHash": "7cc56c97181825d32149749762bbdb64adb7d10b",
     "state": "u",
     "package": "force-app",
-    "metadataType": "LightningComponentBundle",
-    "deferContentHash": true
+    "metadataType": "LightningComponentBundle"
   },
   "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc/countdownTimer/countdownTimer.js": {
     "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc/countdownTimer/countdownTimer.js",
@@ -238,8 +267,7 @@
     "contentHash": "bf1ab76fd8e0c35b2a21d02e4b020534df153bc2",
     "state": "u",
     "package": "force-app",
-    "metadataType": "LightningComponentBundle",
-    "deferContentHash": true
+    "metadataType": "LightningComponentBundle"
   },
   "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc/countdownTimer/countdownTimer.js-meta.xml": {
     "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc/countdownTimer/countdownTimer.js-meta.xml",
@@ -270,8 +298,7 @@
     "contentHash": "69fa5c156870934ce83e20c195a74ff551d33d1b",
     "state": "u",
     "package": "force-app",
-    "metadataType": "LightningComponentBundle",
-    "deferContentHash": true
+    "metadataType": "LightningComponentBundle"
   },
   "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc/notificationConfig/notificationConfig.js": {
     "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/lwc/notificationConfig/notificationConfig.js",
@@ -367,26 +394,6 @@
     "package": "force-app",
     "metadataType": "PermissionSet"
   },
-  "/Users/michael.holt/Documents/Dev Projects/Expiry Timer": {
-    "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer",
-    "isDirectory": true,
-    "size": 576,
-    "modifiedTime": 1637140520656,
-    "changeTime": 1638132447490,
-    "contentHash": "ccee828d68bda60c97ba3b5719d77e5de8556b41",
-    "state": "u",
-    "isWorkspace": true
-  },
-  "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages": {
-    "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages",
-    "isDirectory": true,
-    "size": 128,
-    "modifiedTime": 1638446906618,
-    "changeTime": 1638446912770,
-    "contentHash": "f6c68fd38626b4587c8f58e03a2f74be88453862",
-    "state": "u",
-    "package": "force-app"
-  },
   "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/tabs": {
     "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/tabs",
     "isDirectory": true,
@@ -408,15 +415,14 @@
     "package": "force-app",
     "metadataType": "CustomTab"
   },
-  "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages/Home_Page_Default.flexipage-meta.xml": {
-    "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer/force-app/main/default/flexipages/Home_Page_Default.flexipage-meta.xml",
-    "size": 1728,
-    "modifiedTime": 1638450486426,
-    "changeTime": 1638450486426,
-    "contentHash": "4733a8590be3c8ff879a2b67c87612e0dab955b8",
-    "isMetadataFile": true,
+  "/Users/michael.holt/Documents/Dev Projects/Expiry Timer": {
+    "sourcePath": "/Users/michael.holt/Documents/Dev Projects/Expiry Timer",
+    "isDirectory": true,
+    "size": 576,
+    "modifiedTime": 1637140520656,
+    "changeTime": 1638132447490,
+    "contentHash": "ccee828d68bda60c97ba3b5719d77e5de8556b41",
     "state": "u",
-    "package": "force-app",
-    "metadataType": "FlexiPage"
+    "isWorkspace": true
   }
 }
