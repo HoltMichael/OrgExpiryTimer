@@ -11,6 +11,8 @@ import scheduledJobUserActive from '@salesforce/apex/CountdownTimerController.sc
 import changeScheduledJobOwner from '@salesforce/apex/CountdownTimerController.changeScheduledJobOwner';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import getScheduledNotifications from '@salesforce/apex/CountdownTimerController.getScheduledNotifications';
+import setDefaults from '@salesforce/apex/CountdownTimerController.setDefaults';
+
 
 
 export default class CountdownTimer extends LightningElement {
@@ -21,9 +23,12 @@ export default class CountdownTimer extends LightningElement {
     orgActive = false;
     cronsScheduledByInactiveUser = false;
     cmpVisible=true;
-
+    noNotifications = false;
+    
+    
     @track daysBeforeExpiry;
     @track configureButton = "Configure Expiry Notifications";
+
     
     
     connectedCallback(){
@@ -57,8 +62,28 @@ export default class CountdownTimer extends LightningElement {
         console.log(data);
         console.log(error);
         if(data == ''){
+            this.noNotifications = true;
             this.fireToast('Org Expiry Notifier','No org expiration notifications have been configured. Use \'Configure Expiry Notifications\' to fix this', 'warning');
         }
+    }
+
+    /* 
+        setDefaults
+        Sets notifications to the app defaults; 1 week and 1 day before org expiry
+    */
+    setDefaults(){
+        setDefaults()
+        .then((result) => {
+            if(result.toLowerCase().includes("success")){
+                this.fireToast('Success', result, 'success');
+                noNotifications = true;
+            }else{
+                this.fireToast('Error', result, 'error');
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     }
 
 

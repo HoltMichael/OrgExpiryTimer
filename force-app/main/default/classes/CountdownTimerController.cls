@@ -24,6 +24,20 @@ public without sharing class CountdownTimerController {
     }
 
     /*
+        Set default notifications, 1 week and 1 day before org expiry
+    */
+    @AuraEnabled
+    public static string setDefaults(){
+        String response = 'Successfully scheduled default expiry notifications';
+        try {
+            PostInstallHandler.onInstall(null);
+        } catch (Exception e) {
+            response = e.getMessage();
+        }
+        return response;
+    }
+
+    /*
         Returns whether the scheduled job to fire the notifications is active
         If they are inactive, LWC prompts user to click "Activate" button
         for user to take ownership of existing jobs

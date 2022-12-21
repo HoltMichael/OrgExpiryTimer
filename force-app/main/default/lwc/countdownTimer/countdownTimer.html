@@ -41,13 +41,23 @@
                                     </div>
                                     
                                 </template>
+                                <template if:true={noNotifications}>
+                                    <div class="slds-col slds-size_1-of-1 slds-align_absolute-center slds-p-bottom_small">
+                                        <lightning-button variant="destructive" label="1-Click Activation" title="Set Default Notifications" onclick={setDefaults} tooltip="Default Notifications are scheduled 1 week and 1 day before org expiry, this can be customised"></lightning-button>
+                                    </div>
+                                </template>
                                 <template if:false={cronsScheduledByInactiveUser}>
-                                    <lightning-button variant="brand" label={configureButton} title={configureButton} onclick={invertExpanded} ></lightning-button>
+                                    <div class="slds-col slds-size_1-of-1 slds-align_absolute-center">
+                                        <lightning-button variant="brand" label={configureButton} title={configureButton} onclick={invertExpanded} ></lightning-button>
+                                    </div>
                                 </template>
                             </div>
                         </template>
                         <div slot="footer">
-                            <lightning-formatted-url label="Salesforce Help" value="https://help.salesforce.com/s/case-selection" tooltip="Partner Support" target="_blank"></lightning-formatted-url>
+                            <div class="slds-col slds-size_1-of-1">
+                                <lightning-formatted-url label="Salesforce Help" value="https://help.salesforce.com/s/case-selection" tooltip="Partner Support" target="_blank"></lightning-formatted-url>
+                            </div>
+                            <lightning-formatted-url label="Org Expiry Notifier Help" value="https://sfdc.co/OEN" tooltip="Org Expiry Notifier Help" target="_blank"></lightning-formatted-url>
                         </div>
                 </template>
             </template>
